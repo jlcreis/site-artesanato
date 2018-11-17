@@ -9,6 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface Acao {
 	
-	String executa (HttpServletRequest request, HttpServletResponse rsponse) throws ServletException, IOException, SQLException;
+	String executa (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException;
 
 }

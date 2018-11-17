@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.projeto.jdbc.Conexao;
 import br.com.projeto.modelo.Categoria;
 
 public class CategoriaDAO {

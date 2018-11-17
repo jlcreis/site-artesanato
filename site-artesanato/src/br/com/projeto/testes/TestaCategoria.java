@@ -12,10 +12,10 @@ public class TestaCategoria {
 
 	public static void main(String[] args) throws SQLException {
 
-//		insert("Quadros");
-//		delete(5);
-//		list();
-//		select(1);
+		insert("Quadros");
+		delete(5);
+		list();
+		select(1);
 		update(2,"Tricô");
 
 	}
@@ -65,7 +65,7 @@ public class TestaCategoria {
 	}
 	
 	/**
-	 * Teste de insersão categoria
+	 * Teste de inserção categoria
 	 * @param nomeCategoria
 	 * @throws SQLException
 	 */
