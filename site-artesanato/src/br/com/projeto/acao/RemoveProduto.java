@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.projeto.jdbc.Conexao;
+import br.com.projeto.jdbc.dao.ImagemDAO;
 import br.com.projeto.jdbc.dao.ProdutoDAO;
 
 public class RemoveProduto implements Acao {
@@ -21,8 +22,19 @@ public class RemoveProduto implements Acao {
 		Integer id = Integer.valueOf(paramId);
 		
 		try(Connection con = new Conexao().getConnection()){
-			ProdutoDAO removeProduto = new ProdutoDAO(con);
-			removeProduto.delete(id);
+			con.setAutoCommit(false);
+			try {
+				ImagemDAO removeImagens = new ImagemDAO(con);
+				removeImagens.deleteImgProduto(id);
+			
+				ProdutoDAO removeProduto = new ProdutoDAO(con);
+				removeProduto.delete(id);
+			
+				con.commit();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				con.rollback();
+			}
 		}
 		
 		return "redirect:ListaProdutos";

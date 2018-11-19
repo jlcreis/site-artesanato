@@ -18,11 +18,11 @@ public class ListaCategorias implements Acao{
 	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse rsponse)
 			throws ServletException, IOException, SQLException {
-		
-		System.out.println("listando categorias...");
-		List<Categoria> listaCategorias;
+				
+		List<Categoria> listaCategorias = null;
 		try (Connection con = new Conexao().getConnection()) {
 			listaCategorias = new CategoriaDAO(con).lista();	
+
 		}
 		request.setAttribute("categorias", listaCategorias);
 		

@@ -74,7 +74,7 @@ public class Upload extends HttpServlet {
                 }
  
                 request.setAttribute("message", "Arquivo carregado com sucesso");
-                request.setAttribute("nome_img", nome_img);
+//              request.setAttribute("nome_img", nome_img);
             } catch (Exception ex) {
                 request.setAttribute("message", "Upload de arquivo falhou devido a "+ ex);
             }
@@ -85,7 +85,7 @@ public class Upload extends HttpServlet {
         
         
         response.sendRedirect("entrada?acao=NovaImagemForm&id="+ id);
-        //request.getRequestDispatcher("WEB-INF/view/formNovoImagemProduto.jsp").forward(request, response);
+//		request.getRequestDispatcher("WEB-INF/view/formNovoImagemProduto.jsp").forward(request, response);
     
 	}
 

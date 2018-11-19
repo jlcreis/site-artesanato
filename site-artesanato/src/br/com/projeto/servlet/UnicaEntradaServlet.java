@@ -24,7 +24,7 @@ public class UnicaEntradaServlet extends HttpServlet {
 		String paramAcao = request.getParameter("acao");
 		String nomeDaClasse = "br.com.projeto.acao." + paramAcao;
 		String nome = null;
-
+		
 		try {
 			Class<?> classe = Class.forName(nomeDaClasse);
 			@SuppressWarnings("deprecation")

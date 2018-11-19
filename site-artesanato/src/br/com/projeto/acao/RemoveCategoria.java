@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.projeto.jdbc.Conexao;
 import br.com.projeto.jdbc.dao.CategoriaDAO;
 
-public class RemoveCategoria implements Acao {
 
+public class RemoveCategoria implements Acao {
+	
 	@Override
-	public String executa(HttpServletRequest request, HttpServletResponse rsponse)
+	public String executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		
 		String paramId = request.getParameter("id");
@@ -24,6 +25,13 @@ public class RemoveCategoria implements Acao {
 			CategoriaDAO removeCategoria = new CategoriaDAO(con);
 			removeCategoria.delete(id_categoria);
 		}
+		catch (SQLException e) {
+			String erro = "Não é possível remover categoria. Existem produtos nesta categoria.";
+			System.err.println(e.getErrorCode() +": "+ e.getMessage());
+			request.setAttribute("mensagem", erro);
+			return "forward:mensagemErro";
+		}
+		
 		
 		return "redirect:ListaCategorias";
 	}

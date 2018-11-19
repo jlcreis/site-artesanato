@@ -71,19 +71,20 @@ public class CategoriaDAO {
 	 * Método de exclusão de uma categoria existente.
 	 * 
 	 * @param id_categoria
+	 * @throws SQLException 
 	 */
-	public void delete(int id_categoria) {
-		try {
+	public void delete(int id_categoria) throws SQLException {
+//		try {
 			String query = "delete from categorias where id_categoria = ?";
 
-			PreparedStatement pstmt = con.prepareStatement(query);
+		try(PreparedStatement pstmt = con.prepareStatement(query)){
 			pstmt.setInt(1, id_categoria);
 			pstmt.execute();
-
-		} catch (Exception e) {
-			System.err.println("Ocorreu um erro!");
-			System.err.println(e.getMessage());
 		}
+//		} catch (Exception e) {
+//			System.err.println("Ocorreu um erro!");
+//			System.err.println(e.getMessage());
+//		}
 	}
 
 	/**

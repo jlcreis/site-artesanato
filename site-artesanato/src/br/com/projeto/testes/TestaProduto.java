@@ -11,12 +11,6 @@ import br.com.projeto.modelo.Produto;
 public class TestaProduto {
 
 	public static void main(String[] args) throws SQLException {
-//		list();
-//		select(1);
-//		update(1, "Pano de prato de galinha", 10.0, "Pano com bordado de uma galinha", 1);
-		insert("TESTE", "TESTE", 10.0, 1, 1);
-//		delete(2);
-//		list();
 
 	}
 	
@@ -60,6 +54,7 @@ public class TestaProduto {
 	 * @param categoria
 	 * @throws SQLException
 	 */
+	@SuppressWarnings("unused")
 	private static void update(int id, String nome, double valor, String descricao, int categoria) throws SQLException {
 		try(Connection con = new Conexao().getConnection()){
 			Produto produto = new Produto(id, nome, descricao, valor, categoria);
@@ -97,6 +92,7 @@ public class TestaProduto {
 	 * @param id_produto
 	 * @throws SQLException
 	 */
+	@SuppressWarnings("unused")
 	private static void delete(int id_produto) throws SQLException {
 		try(Connection con = new Conexao().getConnection()){
 			ProdutoDAO removeProduto = new ProdutoDAO(con);

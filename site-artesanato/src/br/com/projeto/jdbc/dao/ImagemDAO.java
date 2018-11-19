@@ -1,5 +1,6 @@
 package br.com.projeto.jdbc.dao;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.projeto.app.ConstantesApp;
 import br.com.projeto.modelo.Imagem;
 
 public class ImagemDAO {
@@ -77,6 +79,23 @@ public class ImagemDAO {
 		} catch (Exception e) {
 			System.err.println("Ocorreu um erro!");
 			System.err.println(e.getMessage());
+		}
+	}
+	
+	public void deleteImgProduto (int id_produto) throws SQLException {
+		
+		List<Imagem> imagens = lista(id_produto);
+		
+		String query = "delete from img_produto where id_produto = ?";
+		
+		try(PreparedStatement pstmt = con.prepareStatement(query)){
+			for (Imagem imagem : imagens) {
+				pstmt.setInt(1, imagem.getId_produto());
+				pstmt.execute();
+				
+				File img = new File(ConstantesApp.CAMINHO_IMG +"\\"+ imagem.getNome_img() + ".jpg" );
+				img.delete();
+			}
 		}
 	}
 

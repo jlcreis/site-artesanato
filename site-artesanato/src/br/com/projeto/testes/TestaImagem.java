@@ -12,12 +12,7 @@ import br.com.projeto.modelo.Imagem;
 public class TestaImagem {
 
 	public static void main(String[] args) throws SQLException {
-//		
-//		insert(1, "img_01");
-//		
-//		delete(2);
-//		
-//		list(1);
+
 
 	}
 	
@@ -42,6 +37,7 @@ public class TestaImagem {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void delete(int id) throws SQLException {
 		try(Connection con = new Conexao().getConnection()){
 			ImagemDAO removeImagem = new ImagemDAO(con);
