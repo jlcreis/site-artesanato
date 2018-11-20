@@ -31,7 +31,7 @@ public class ProdutoDAO {
 	public List<Produto> list() throws SQLException {
 		List<Produto> produtos = new ArrayList<>();
 
-		String query = "select * from produtos";
+		String query = "select * from produtos order by nome_produto";
 
 		try (PreparedStatement pstmt = con.prepareStatement(query)) {
 			pstmt.execute();

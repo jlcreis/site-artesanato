@@ -1,16 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.List,br.com.projeto.modelo.Produto" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Site Artesanato</title>
-</head>
-<body>
+<%@ page import="java.util.List,br.com.projeto.modelo.Produto" %>
+
+<c:import url="cabecalho.jsp"></c:import>
+<c:import url="menu.jsp"></c:import>
+
 	<h1>Produtos</h1>
 	<p><a href="/site-artesanato/entrada?acao=NovoProdutoForm">Novo Produto</a></p>
 	<ul>
@@ -23,5 +19,4 @@
 		</c:forEach>
 	</ul>
 
-</body>
-</html>
+<c:import url="rodape.jsp"></c:import>

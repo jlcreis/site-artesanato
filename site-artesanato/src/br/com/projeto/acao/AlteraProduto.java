@@ -18,6 +18,8 @@ public class AlteraProduto implements Acao {
 	public String executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		
+		System.out.println(request.getParameter("categoria"));
+		
 		String paramId = request.getParameter("id");
 		Integer id = Integer.valueOf(paramId);
 		String nome = request.getParameter("nome");

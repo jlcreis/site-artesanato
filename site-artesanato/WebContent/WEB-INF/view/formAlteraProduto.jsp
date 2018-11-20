@@ -1,29 +1,44 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <c:url value="/entrada" var="linkEntradaServlet" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Site Artesanato</title>
-</head>
-<body>
+
+<c:import url="cabecalho.jsp"></c:import>
+<c:import url="menu.jsp"></c:import>
+
+<a class="btn btn-primary" href="/site-artesanato/entrada?acao=NovaImagemForm&id=${produto.id_produto}" role="button">Editar Imagens</a> 
+
 	<form action="${linkEntradaServlet}" method="post">
-		Nome: <input type="text" name="nome" value="${produto.nome_produto}"/>
-		Descrição: <input type="text" name="descricao" value="${produto.descricao_produto}"/>
-		Valor: <input type="text" name="valor" value="${produto.valor_produto}"/>
-		Categoria: <input type="text" name="categoria" value="${produto.categoria_produto}"/>
+	<div class="form-group">
+		<label for="nomeProduto">Nome</label> 
+		<input type="text" class="form-control" id="nomeProduto" name="nome" value="${produto.nome_produto}"/>
+	</div>	
+	<div class="form-group">
+		<label for="descricaoProduto">DescriÃ§Ã£o</label> 
+		<textarea class="form-control" id="descricaoProduto"  name="descricao">${produto.descricao_produto}</textarea>
+	</div>
+	<div class="form-group">
+		<label for="valorProduto">Valor</label> 
+		<input type="text" class="form-control" id="valorProduto" name="valor" value="${produto.valor_produto}"/>
+	</div>
+	<div class="form-group">
+		<label for="categoriaProduto">Categoria</label> 
+		<select class="custom-select" id="categoriaProduto" name="categoria">
+		  	<c:forEach items="${categorias}" var="categoria">
+		  		<c:if test="${categoria.id_categoria == produto.categoria_produto }">
+		  			<option selected value="${categoria.id_categoria }">${categoria.nome_categoria }</option>
+		  	</c:if>
+		  		<option value="${categoria.id_categoria }">${categoria.nome_categoria }</option>
+		  </c:forEach>
+		</select>
+	</div>		
 		<input type="hidden" name="id" value="${produto.id_produto }" />
 		<input type="hidden" name="acao" value="AlteraProduto" />
-		<input type="submit"/>
+		<button type="submit" class="btn btn-success">Salvar</button>
+		<a class="btn btn-secondary" href="/site-artesanato/entrada?acao=MostraProduto&id=${produto.id_produto}" role="button">Voltar</a> 
 	</form>
-	<p>Categorias disponíveis:</p>
-	<c:forEach items="${categorias}" var="categoria">
-	<ul>
-		<li>${categoria.id_categoria } - ${categoria.nome_categoria }</li>
-	</ul>
-	</c:forEach>
+		
 	
-	<a href="/site-artesanato/entrada?acao=NovaImagemForm&id=${produto.id_produto}">Editar imagens</a> 
-</body>
-</html>
+
+<c:import url="rodape.jsp"></c:import>

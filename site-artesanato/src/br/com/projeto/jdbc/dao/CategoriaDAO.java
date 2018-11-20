@@ -51,7 +51,7 @@ public class CategoriaDAO {
 	public List<Categoria> lista() throws SQLException {
 		List<Categoria> categorias = new ArrayList<>();
 
-		String query = "select * from categorias";
+		String query = "select * from categorias order by nome_categoria";
 
 		try (PreparedStatement pstmt = con.prepareStatement(query)) {
 			pstmt.execute();
