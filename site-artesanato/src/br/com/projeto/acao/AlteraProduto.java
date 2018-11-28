@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.projeto.jdbc.Conexao;
 import br.com.projeto.jdbc.dao.ProdutoDAO;
+import br.com.projeto.modelo.Categoria;
 import br.com.projeto.modelo.Produto;
 
 public class AlteraProduto implements Acao {
@@ -27,7 +28,8 @@ public class AlteraProduto implements Acao {
 		String paramValor = request.getParameter("valor");
 		Double valor = Double.valueOf(paramValor);
 		String paramCategoria = request.getParameter("categoria");
-		Integer categoria = Integer.valueOf(paramCategoria);
+		Categoria categoria = new Categoria (Integer.valueOf(paramCategoria));
+//		Integer categoria = Integer.valueOf(paramCategoria);
 		
 		try(Connection con = new Conexao().getConnection()){
 			Produto produto = new Produto(id, nome, descricao, valor, categoria);

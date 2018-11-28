@@ -6,6 +6,7 @@ import java.util.List;
 
 import br.com.projeto.jdbc.Conexao;
 import br.com.projeto.jdbc.dao.ProdutoDAO;
+import br.com.projeto.modelo.Categoria;
 import br.com.projeto.modelo.Produto;
 
 public class TestaProduto {
@@ -55,8 +56,9 @@ public class TestaProduto {
 	 * @throws SQLException
 	 */
 	@SuppressWarnings("unused")
-	private static void update(int id, String nome, double valor, String descricao, int categoria) throws SQLException {
+	private static void update(int id, String nome, double valor, String descricao, int id_categoria) throws SQLException {
 		try(Connection con = new Conexao().getConnection()){
+			Categoria categoria = new Categoria(id_categoria);
 			Produto produto = new Produto(id, nome, descricao, valor, categoria);
 			ProdutoDAO update = new ProdutoDAO(con);
 			update.update(produto);
@@ -76,8 +78,9 @@ public class TestaProduto {
 	 * @param empresa
 	 * @throws SQLException
 	 */
-	public static void insert(String nome, String descricao, double valor, int categoria, int empresa) throws SQLException {
+	public static void insert(String nome, String descricao, double valor, int id_categoria, int empresa) throws SQLException {
 		try (Connection con = new Conexao().getConnection()) {
+			Categoria categoria = new Categoria(id_categoria);
 			Produto novoProduto = new Produto(nome, descricao, valor, categoria, empresa);
 			ProdutoDAO dao = new ProdutoDAO(con);
 			dao.insert(novoProduto);

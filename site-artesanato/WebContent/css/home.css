@@ -1,0 +1,28 @@
+@charset "ISO-8859-1";
+
+.cover {
+	object-fit: cover;
+    height: 20rem;
+}
+
+.cover-sm {
+	object-fit: cover;
+    height: 10rem;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.center{
+	margin: auto;
+	margin-left: 1rem;
+}
+
+.dst-b {
+	margin: 2rem 0;
+}

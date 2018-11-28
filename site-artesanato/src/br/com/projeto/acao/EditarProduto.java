@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.projeto.jdbc.Conexao;
 import br.com.projeto.jdbc.dao.CategoriaDAO;
+import br.com.projeto.jdbc.dao.ImagemDAO;
 import br.com.projeto.jdbc.dao.ProdutoDAO;
 import br.com.projeto.modelo.Categoria;
+import br.com.projeto.modelo.Imagem;
 import br.com.projeto.modelo.Produto;
 
 public class EditarProduto implements Acao {
@@ -29,6 +31,12 @@ public class EditarProduto implements Acao {
 			Produto produto = buscaProduto.select(id);
 			CategoriaDAO categorias = new CategoriaDAO(con);
 			List<Categoria> listaCategorias = categorias.lista();
+			
+//			int id_produto = Integer.valueOf(request.getParameter("id"));
+			List<Imagem> lista = new ImagemDAO(con).lista(id);
+			
+			request.setAttribute("listaImagens", lista);
+//			request.setAttribute("id_produto", id_produto);
 			
 			request.setAttribute("produto", produto);
 			request.setAttribute("categorias", listaCategorias);

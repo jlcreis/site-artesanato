@@ -4,7 +4,7 @@
 <%@ page import="java.util.List,br.com.projeto.modelo.Produto"%>
 
 <c:import url="cabecalho.jsp"></c:import>
-<c:import url="menu.jsp"></c:import>
+<c:import url="public/menuIndex.jsp"></c:import>
 
 <style type="text/css">
 @import url("css/home.css");
@@ -127,5 +127,5 @@
 	<div class="col-2"></div>
 </div>
 
-<%-- <c:import url="footer.jsp"></c:import> --%>
+<c:import url="footer.jsp"></c:import>
 <c:import url="rodape.jsp"></c:import>

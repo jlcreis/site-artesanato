@@ -32,7 +32,8 @@ public class RemoveImagemProduto implements Acao {
 		File imagem = new File(ConstantesApp.CAMINHO_IMG +"\\"+ nomeImg + ".jpg" );
 		imagem.delete();
 		
-		return "redirect:NovaImagemForm&id="+id;
+		return "redirect:EditarProduto&id="+id;
+//		return "redirect:NovaImagemForm&id="+id;
 	}
 
 }

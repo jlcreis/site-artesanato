@@ -11,7 +11,7 @@
 
 <div class="row align-items-center">
 	<div class="col">
-		<h1>Categorias</h1>
+		<h1 class="display-4">Categorias</h1>
 	</div>
 	<div class="col-6">
 		<c:if test="${mensagem }">
@@ -32,7 +32,7 @@
 
 <ul class="list-group">
 	<c:forEach items="${categorias}" var="categoria">
-		<li class="list-group-item">${categoria.nome_categoria }
+		<li class="list-group-item"><span class="lead">${categoria.nome_categoria }</span>
 			<div class="btn-group float-right">
 				<!-- Modal Button alteraCategoria -->
 				<button type="button" class="btn btn-outline-warning btn-sm"

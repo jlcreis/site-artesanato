@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.projeto.jdbc.Conexao;
+import br.com.projeto.jdbc.dao.ImagemDAO;
 import br.com.projeto.jdbc.dao.ProdutoDAO;
+import br.com.projeto.modelo.Imagem;
 import br.com.projeto.modelo.Produto;
 
 public class ListaProdutos implements Acao {
@@ -23,6 +25,10 @@ public class ListaProdutos implements Acao {
 		List<Produto> listaProdutos;
 		try(Connection con = new Conexao().getConnection()){
 			listaProdutos = new ProdutoDAO(con).list();
+			for (Produto p : listaProdutos) {
+				List<Imagem> imagem = new ImagemDAO(con).imgTop(p.getId_produto());
+				p.setLista_imagens(imagem);
+			}
 		}
 		request.setAttribute("produtos", listaProdutos);
 		

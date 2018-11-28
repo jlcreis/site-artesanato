@@ -29,8 +29,6 @@
           			<a class="dropdown-item" href="/site-artesanato/entrada?acao=NovoProdutoForm">Adicionar</a>
         		</div>
 			</li>
-			<li class="nav-item"><a class="nav-link"
-				href="/site-artesanato/entrada?acao=ListaProdutos">Produtos</a></li>
 		</ul>
 	</div>
 </nav>

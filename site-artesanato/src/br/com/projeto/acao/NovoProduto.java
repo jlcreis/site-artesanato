@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.projeto.jdbc.Conexao;
 import br.com.projeto.jdbc.dao.ProdutoDAO;
+import br.com.projeto.modelo.Categoria;
 import br.com.projeto.modelo.Produto;
 
 public class NovoProduto implements Acao {
@@ -23,7 +24,7 @@ public class NovoProduto implements Acao {
 		String paramValor = request.getParameter("valor");
 		Double valor = Double.valueOf(paramValor);
 		String paramCategoria = request.getParameter("categoria");
-		Integer categoria = Integer.valueOf(paramCategoria);
+		Categoria categoria = new Categoria (Integer.valueOf(paramCategoria));
 		
 		int empresa = 1;
 		int id_produto = 0;
@@ -35,9 +36,9 @@ public class NovoProduto implements Acao {
 			
 		}
 		
-		request.setAttribute("id_produto", id_produto);
+//		request.setAttribute("id_produto", id_produto);
 		
-		return "forward:formNovoImagemProduto";
+		return "redirect:EditarProduto&id="+ id_produto;
 	}
 
 }

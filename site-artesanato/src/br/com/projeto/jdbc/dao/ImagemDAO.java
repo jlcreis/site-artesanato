@@ -63,6 +63,26 @@ public class ImagemDAO {
 		return imagens;
 	}
 	
+	public List<Imagem> imgTop(int id_produto) throws SQLException {
+		List<Imagem> imagens = new ArrayList<>();
+
+		String query = "select * from img_produto where id_produto = ? LIMIT 1";
+
+		try (PreparedStatement pstmt = con.prepareStatement(query)) {
+			pstmt.setInt(1, id_produto);
+			pstmt.execute();
+			try (ResultSet rs = pstmt.getResultSet()) {
+				while (rs.next()) {
+					int id_img = rs.getInt("id_img");
+					String nome = rs.getString("nome_img");
+					Imagem img = new Imagem(id_img, id_produto, nome);
+					imagens.add(img);
+				}
+			}
+		}
+		return imagens;
+	}
+	
 	/**
 	 * Remove registro de imagem do banco de dados;
 	 * 

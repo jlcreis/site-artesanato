@@ -84,7 +84,8 @@ public class Upload extends HttpServlet {
         }
         
         
-        response.sendRedirect("entrada?acao=NovaImagemForm&id="+ id);
+        response.sendRedirect("entrada?acao=EditarProduto&id="+ id);
+//        response.sendRedirect("entrada?acao=NovaImagemForm&id="+ id);
 //		request.getRequestDispatcher("WEB-INF/view/formNovoImagemProduto.jsp").forward(request, response);
     
 	}

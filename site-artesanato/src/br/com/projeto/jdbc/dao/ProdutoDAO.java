@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.mysql.jdbc.Statement;
 
+import br.com.projeto.modelo.Categoria;
 import br.com.projeto.modelo.Produto;
 
 public class ProdutoDAO {
@@ -31,7 +32,7 @@ public class ProdutoDAO {
 	public List<Produto> list() throws SQLException {
 		List<Produto> produtos = new ArrayList<>();
 
-		String query = "select * from produtos order by nome_produto";
+		String query = "select * from produtos p join categorias c where p.categoria_produto = c.id_categoria order by nome_produto";
 
 		try (PreparedStatement pstmt = con.prepareStatement(query)) {
 			pstmt.execute();
@@ -41,7 +42,38 @@ public class ProdutoDAO {
 					String nome = rs.getString("nome_produto");
 					String descricao = rs.getString("descricao_produto");
 					double valor = rs.getDouble("valor_produto");
-					int categoria = rs.getInt("categoria_produto");
+					int id_categoria = rs.getInt("id_categoria");
+					String nome_categoria = rs.getString("nome_categoria");
+					Categoria categoria = new Categoria (id_categoria,nome_categoria);
+					Produto produto = new Produto(id, nome, descricao, valor, categoria);
+					produtos.add(produto);
+				}
+			}
+		}
+		return produtos;
+	}
+	
+	/**
+	 * Lista os 5 ultimos produtos cadastrados.
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Produto> top5() throws SQLException {
+		List<Produto> produtos = new ArrayList<>();
+
+		String query = "select * from produtos p join categorias c where p.categoria_produto = c.id_categoria order by p.id_produto desc LIMIT 5";
+
+		try (PreparedStatement pstmt = con.prepareStatement(query)) {
+			pstmt.execute();
+			try (ResultSet rs = pstmt.getResultSet()) {
+				while (rs.next()) {
+					int id = rs.getInt("id_produto");
+					String nome = rs.getString("nome_produto");
+					String descricao = rs.getString("descricao_produto");
+					double valor = rs.getDouble("valor_produto");
+					int id_categoria = rs.getInt("id_categoria");
+					String nome_categoria = rs.getString("nome_categoria");
+					Categoria categoria = new Categoria (id_categoria,nome_categoria);
 					Produto produto = new Produto(id, nome, descricao, valor, categoria);
 					produtos.add(produto);
 				}
@@ -59,7 +91,7 @@ public class ProdutoDAO {
 	 */
 	public Produto select(int id_produto) throws SQLException {
 		Produto produto = null;
-		String query = "select * from produtos where id_produto = ?";
+		String query = "select * from produtos p join categorias c where p.categoria_produto = c.id_categoria and p.id_produto = ?";
 		try (PreparedStatement pstmt = con.prepareStatement(query)) {
 			pstmt.setInt(1, id_produto);
 			pstmt.execute();
@@ -69,7 +101,9 @@ public class ProdutoDAO {
 					String nome = rs.getString("nome_produto");
 					String descricao = rs.getString("descricao_produto");
 					double valor = rs.getDouble("valor_produto");
-					int categoria = rs.getInt("categoria_produto");
+					int id_categoria = rs.getInt("id_categoria");
+					String nome_categoria = rs.getString("nome_categoria");
+					Categoria categoria = new Categoria (id_categoria,nome_categoria);
 					Produto resultado = new Produto(id, nome, descricao, valor, categoria);
 					produto = resultado;
 				}
@@ -92,7 +126,7 @@ public class ProdutoDAO {
 			pstmt.setString(1, produto.getNome_produto());
 			pstmt.setString(2, produto.getDescricao_produto());
 			pstmt.setDouble(3, produto.getValor_produto());
-			pstmt.setInt(4, produto.getCategoria_produto());
+			pstmt.setInt(4, produto.getCategoria().getId_categoria());
 			pstmt.setInt(5, produto.getId_produto());
 			pstmt.execute();
 		}
@@ -112,7 +146,7 @@ public class ProdutoDAO {
 			pstmt.setString(1, produto.getNome_produto());
 			pstmt.setString(2, produto.getDescricao_produto());
 			pstmt.setDouble(3, produto.getValor_produto());
-			pstmt.setInt(4, produto.getCategoria_produto());
+			pstmt.setInt(4, produto.getCategoria().getId_categoria());
 			pstmt.setInt(5, produto.getEmpresa_produto());
 			pstmt.execute();
 			ResultSet resultSet =pstmt.getGeneratedKeys();
