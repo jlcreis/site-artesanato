@@ -50,12 +50,6 @@
   <img class="card-img-top" src="img/${img.nome_img }.jpg" alt="Card image cap"></a></c:forEach>
   <div class="card-body">
     <h5 class="card-title"><span class="lead">${produto.nome_produto }</span></h5>
-<%--     <p class="card-text">${produto.descricao_produto }</p> --%>
-    				<!-- Modal Button removeProduto -->
-<!-- 				<button type="button" class="btn btn-outline-secondary btn-sm" -->
-<!-- 					data-toggle="modal" -->
-<%-- 					data-target="#removeProduto_${produto.id_produto}"> --%>
-<!-- 					X</button>   -->
 				
   </div>
 </div>
@@ -63,55 +57,5 @@
 
 </c:forEach>
 </div>
-<ul class="list-group">
-		<c:forEach items="${produtos}" var="produto">
-			<li class="list-group-item"> 
-			<div class="row align-items-top">
-	<div class="col">
-				<p class="lead"><strong>${produto.nome_produto }</strong></p>
-				<p class="lead">${produto.descricao_produto }. </p>
-				<p class="lead">
-         			<fmt:formatNumber value = "${produto.valor_produto }" type = "currency"/>.
-         			<label>Categoria </label>
-					${produto.categoria.nome_categoria }.</p> </div>
-					<div class="col">
-				<div class="btn-group float-right" role="group">
-				<a class="btn btn-outline-secondary btn-sm" role="button" href="/site-artesanato/entrada?acao=MostraProduto&id=${produto.id_produto}">Ver</a>
-				<!-- Modal Button removeProduto -->
-				<button type="button" class="btn btn-outline-secondary btn-sm"
-					data-toggle="modal"
-					data-target="#removeProduto_${produto.id_produto}">
-					Remover</button>  
-				</div></div></div>
-			</li>
-			
-			<!-- Modal removeProduto -->
-<%-- 		<div class="modal fade" id="removeProduto_${produto.id_produto}" --%>
-<!-- 			tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" -->
-<!-- 			aria-hidden="true"> -->
-<!-- 			<div class="modal-dialog" role="document"> -->
-<!-- 				<div class="modal-content"> -->
-<!-- 					<div class="modal-header"> -->
-<!-- 						<h5 class="modal-title" id="exampleModalLabel">Atenção!</h5> -->
-<!-- 						<button type="button" class="close" data-dismiss="modal" -->
-<!-- 							aria-label="Close"> -->
-<!-- 							<span aria-hidden="true">&times;</span> -->
-<!-- 						</button> -->
-<!-- 					</div> -->
-<!-- 					<div class="modal-body"> -->
-<%-- 						Tem certeza que deseja remover o produto <strong>${produto.nome_produto }</strong> --%>
-<!-- 						? -->
-<!-- 					</div> -->
-<!-- 					<div class="modal-footer"> -->
-<!-- 						<button type="button" class="btn btn-secondary" -->
-<!-- 							data-dismiss="modal">Não</button> -->
-<!-- 						<a class="btn btn-danger" role="button" -->
-<%-- 							href="/site-artesanato/entrada?acao=RemoveProduto&id=${produto.id_produto}">Sim</a> --%>
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-		</c:forEach>
-</ul>
 
 <c:import url="rodape.jsp"></c:import>

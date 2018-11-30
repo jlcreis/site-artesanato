@@ -15,8 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.projeto.acao.Acao;
 import br.com.projeto.acao.Home;
 import br.com.projeto.jdbc.Conexao;
+import br.com.projeto.jdbc.dao.CategoriaDAO;
 import br.com.projeto.jdbc.dao.ImagemDAO;
 import br.com.projeto.jdbc.dao.ProdutoDAO;
+import br.com.projeto.modelo.Categoria;
 import br.com.projeto.modelo.Imagem;
 import br.com.projeto.modelo.Produto;
 
@@ -34,6 +36,11 @@ public class IndexServlet extends HttpServlet {
 		try(Connection con = new Conexao().getConnection()){
 			ProdutoDAO produtos = new ProdutoDAO(con);
 			List<Produto> lista_produtos = produtos.top5();
+			
+			CategoriaDAO categorias = new CategoriaDAO(con);
+			List<Categoria> lista_categorias = categorias.lista();
+			
+			request.setAttribute("categorias", lista_categorias);
 			
 			int count = 1;
 			

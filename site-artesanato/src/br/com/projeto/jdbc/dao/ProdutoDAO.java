@@ -82,6 +82,31 @@ public class ProdutoDAO {
 		return produtos;
 	}
 	
+	public List<Produto> produtoCategoria(int categoria) throws SQLException{
+		List<Produto> produtos = new ArrayList<>();
+
+		String query = "select * from produtos p join categorias c where p.categoria_produto = ? and p.categoria_produto = c.id_categoria order by p.nome_produto";
+
+		try (PreparedStatement pstmt = con.prepareStatement(query)) {
+			pstmt.setInt(1, categoria);
+			pstmt.execute();
+			try (ResultSet rs = pstmt.getResultSet()) {
+				while (rs.next()) {
+					int id = rs.getInt("id_produto");
+					String nome = rs.getString("nome_produto");
+					String descricao = rs.getString("descricao_produto");
+					double valor = rs.getDouble("valor_produto");
+					int id_categoria = rs.getInt("id_categoria");
+					String nome_categoria = rs.getString("nome_categoria");
+					Categoria c = new Categoria (id_categoria,nome_categoria);
+					Produto produto = new Produto(id, nome, descricao, valor, c);
+					produtos.add(produto);
+				}
+			}
+		}
+		return produtos;
+	}
+	
 	/**
 	 * Método para seleção de um produto existente.
 	 * 

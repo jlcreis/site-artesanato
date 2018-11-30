@@ -18,6 +18,12 @@
 	    margin-right: auto;
  	}
  	
+ 	.img-thumbnail {
+	object-fit: cover;
+	width: 100px;
+	height: 100px;
+}
+ 	
 </style>
 
 

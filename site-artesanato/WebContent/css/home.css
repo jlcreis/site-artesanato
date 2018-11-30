@@ -1,5 +1,9 @@
 @charset "ISO-8859-1";
 
+.cor-fundo{
+	background-color: #FFE4C4;
+}
+
 .cover {
 	object-fit: cover;
     height: 20rem;
@@ -26,3 +30,12 @@
 .dst-b {
 	margin: 2rem 0;
 }
+
+.tx-p {
+	font-size: 1rem !important;
+}
+
+.tx-dest-a{
+	text-shadow: 1px 1px 10px black;
+}
+
