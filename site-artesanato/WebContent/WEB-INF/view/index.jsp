@@ -11,7 +11,7 @@
 </style>
 
 <div class="row justify-content-center">
-	<div class="col-2">
+	<div class="col-lg-2">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarVertical" aria-controls="navbarVertical"
@@ -43,7 +43,7 @@
 			</div>
 		</nav>
 	</div>
-	<div class="col-8">
+	<div class="col-lg-8">
 		<div class="container-fluid">
 			<div class="py-5">
 		<c:if test="${produto_1 != null }">
@@ -62,7 +62,7 @@
 			</a>
 		</c:if>
 		<div class="row border-top">
-			<div class="col-4 dst-b">
+			<div class="col-sm-4 dst-b">
 				<a
 					href="/site-artesanato/entrada?acao=PublicProduto&id=${produto_2.id_produto}">
 					<c:if test="${produto_2 != null }">
@@ -76,14 +76,14 @@
 					</c:if>
 				</a>
 			</div>
-			<div class="col-8 dst-b center text-truncate">
+			<div class="col-sm-8 dst-b center text-truncate">
 				<p class="lead font-weight-normal">${produto_2.categoria.nome_categoria }</p>
 				<p class="lead font-weight-bold">${produto_2.nome_produto }</p>
 				<p class="lead font-italic text-truncate tx-p">${produto_2.descricao_produto }</p>
 			</div>
 		</div>
 		<div class="row border-top">
-			<div class="col-4 dst-b">
+			<div class="col-sm-4 dst-b">
 				<c:if test="${produto_3 != null }">
 					<a
 						href="/site-artesanato/entrada?acao=PublicProduto&id=${produto_3.id_produto}">
@@ -98,14 +98,14 @@
 					</a>
 				</c:if>
 			</div>
-			<div class="col-8 dst-b center text-truncate">
+			<div class="col-sm-8 dst-b center text-truncate">
 				<p class="lead font-weight-normal">${produto_3.categoria.nome_categoria }</p>
 				<p class="lead font-weight-bold">${produto_3.nome_produto }</p>
 				<p class="lead font-italic text-truncate tx-p">${produto_3.descricao_produto }</p>
 			</div>
 		</div>
 		<div class="row border-top">
-			<div class="col-4 dst-b">
+			<div class="col-sm-4 dst-b">
 				<c:if test="${produto_4 != null }">
 					<a
 						href="/site-artesanato/entrada?acao=PublicProduto&id=${produto_4.id_produto}">
@@ -120,14 +120,14 @@
 					</a>
 				</c:if>
 			</div>
-			<div class="col-8 dst-b center text-truncate">
+			<div class="col-sm-8 dst-b center text-truncate">
 				<p class="lead font-weight-normal">${produto_4.categoria.nome_categoria }</p>
 				<p class="lead font-weight-bold">${produto_4.nome_produto }</p>
 				<p class="lead font-italic text-truncate tx-p">${produto_4.descricao_produto }</p>
 			</div>
 		</div>
 		<div class="row border-top">
-			<div class="col-4 dst-b">
+			<div class="col-sm-4 dst-b">
 				<c:if test="${produto_5 != null }">
 					<a
 						href="/site-artesanato/entrada?acao=PublicProduto&id=${produto_5.id_produto}">
@@ -142,7 +142,7 @@
 					</a>
 				</c:if>
 			</div>
-			<div class="col-8 dst-b center text-truncate">
+			<div class="col-sm-8 dst-b center text-truncate">
 				<p class="lead font-weight-normal">${produto_5.categoria.nome_categoria }</p>
 				<p class="lead font-weight-bold">${produto_5.nome_produto }</p>
 				<p class="lead font-italic text-truncate tx-p">${produto_5.descricao_produto }</p>
@@ -152,7 +152,7 @@
 		</div>
 	</div>
 
-	<div class="col-2"></div>
+	<div class="col-lg-2"></div>
 </div>
 
 <c:import url="public/footer.jsp"></c:import>

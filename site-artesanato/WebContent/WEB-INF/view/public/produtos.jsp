@@ -6,7 +6,7 @@
 <c:import url="header.jsp"></c:import>
 
 <div class="row justify-content-center">
-	<div class="col-2">
+	<div class="col-lg-2">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarVertical" aria-controls="navbarVertical"
@@ -38,7 +38,7 @@
 			</div>
 		</nav>
 	</div>
-	<div class="col-8">
+	<div class="col-lg-8">
 		<div class="container-fluid">
 			<div class="py-5">
 				<div class="card-columns">
@@ -62,7 +62,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-2"></div>
+	<div class="col-lg-2"></div>
 </div>
 
 

@@ -10,7 +10,7 @@
 @import url("css/index.css");
 </style>
 <div class="row justify-content-center">
-	<div class="col-sm-2">
+	<div class="col-lg-2">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarVertical" aria-controls="navbarVertical"
@@ -34,15 +34,15 @@
 				<c:if test="${c.id_categoria == produto.categoria.id_categoria}">active</c:if>
 			"><a
 							class="nav-link"
-							href="/site-artesanato/entrada?acao=PublicProdutos&id=${c.id_categoria }"> - ${c.nome_categoria }
-								<span class="sr-only">(current)</span>
+							href="/site-artesanato/entrada?acao=PublicProdutos&id=${c.id_categoria }">
+								- ${c.nome_categoria } <span class="sr-only">(current)</span>
 						</a></li>
 					</c:forEach>
 				</ul>
 			</div>
 		</nav>
 	</div>
-	<div class="col-sm-8">
+	<div class="col-lg-8">
 		<div class="container-fluid">
 			<div class="py-5">
 				<div class="card">
@@ -51,10 +51,21 @@
 							<div class="col">
 								<p class="lead font-weight-bold">${produto.nome_produto}</p>
 								<p class="lead text-justify font-italic">${produto.descricao_produto }</p>
-								<p class="lead font-weight-normal">
-									<fmt:formatNumber value="${produto.valor_produto }"
-										type="currency" />
-								</p>
+								<div class="row">
+									<div class="col-auto mr-auto">
+										<p class="lead font-weight-normal">
+											<fmt:formatNumber value="${produto.valor_produto }"
+												type="currency" />
+										</p>
+									</div>
+									<div class="col-auto">
+										<button type="button" class="btn btn-info"
+											data-container="body" data-toggle="popover"
+											data-placement="top"
+											data-content="Este produto pode ser adquirido através ...">
+											Comprar</button>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="row">
@@ -90,8 +101,7 @@
 		</div>
 	</div>
 
-	<div class="col-sm-2"></div>
+	<div class="col-lg-2"></div>
 </div>
-
 <c:import url="footer.jsp"></c:import>
 <c:import url="rodape.jsp"></c:import>
