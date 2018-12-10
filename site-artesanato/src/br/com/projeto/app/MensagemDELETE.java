@@ -1,6 +1,6 @@
 package br.com.projeto.app;
 
-public class Mensagem {
+public class MensagemDELETE {
 	
 	public static String MSG = "";
 	

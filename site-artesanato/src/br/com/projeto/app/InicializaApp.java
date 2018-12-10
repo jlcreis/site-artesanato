@@ -13,9 +13,4 @@ public class InicializaApp implements ServletContextListener {
 			System.err.println(e.getMessage());
 		}
 	}
-	
-
-
-
-
 }

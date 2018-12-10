@@ -14,7 +14,8 @@
 		<h1 class="display-4">Categorias</h1>
 	</div>
 	<div class="col-6">
-		<c:if test="${mensagem }">
+	${mensagem }
+		<c:if test="${mensagem != null}">
 			<div class="alert alert-info" role="alert">${mensagem }</div>
 		</c:if>
 	</div>
@@ -22,7 +23,7 @@
 		<ul class="nav justify-content-end">
 			<li class="nav-item">
 				<!-- Modal Button novaCategoria -->
-				<button type="button" class="btn btn-primary" data-toggle="modal"
+				<button type="button" class="btn btn-outline-secondary" data-toggle="modal"
 					data-target="#novaCategoria">Adicionar Categoria</button> <c:import
 					url="modalNovaCategoria.jsp"></c:import>
 			</li>
@@ -35,12 +36,12 @@
 		<li class="list-group-item"><span class="lead">${categoria.nome_categoria }</span>
 			<div class="btn-group float-right">
 				<!-- Modal Button alteraCategoria -->
-				<button type="button" class="btn btn-outline-warning btn-sm"
+				<button type="button" class="btn btn-outline-secondary btn-sm"
 					data-toggle="modal"
 					data-target="#alteraCategoria_${categoria.id_categoria}">
 					Editar</button>
 				<!-- Modal Button removeCategoria -->
-				<button type="button" class="btn btn-outline-danger btn-sm"
+				<button type="button" class="btn btn-outline-secondary btn-sm"
 					data-toggle="modal"
 					data-target="#removeCategoria_${categoria.id_categoria}">
 					Remover</button>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="${renderContext.mainResourceLocale.language}">
+<html lang="pt-br">
 <head>
 <meta charset="utf-8">
 <meta name="viewport"

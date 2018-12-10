@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page import="java.util.List,br.com.projeto.app.ConstantesApp"%>
 
 <c:import url="cabecalho.jsp"></c:import>
 <c:import url="header.jsp"></c:import>
@@ -10,37 +11,11 @@
 @import url("css/index.css");
 </style>
 <div class="row justify-content-center">
-	<div class="col-lg-2">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarVertical" aria-controls="navbarVertical"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarVertical">
-				<ul class="navbar-nav mr-auto flex-column">
-					<li
-						class="nav-item border-bottom
-						<c:if test="${id == 0}">active</c:if>
-					"><a
-						class="nav-link"
-						href="/site-artesanato/entrada?acao=PublicProdutos&id=0">Produtos
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<c:forEach items="${categorias }" var="c">
-						<li
-							class="nav-item border-bottom
-				<c:if test="${c.id_categoria == produto.categoria.id_categoria}">active</c:if>
-			"><a
-							class="nav-link"
-							href="/site-artesanato/entrada?acao=PublicProdutos&id=${c.id_categoria }">
-								- ${c.nome_categoria } <span class="sr-only">(current)</span>
-						</a></li>
-					</c:forEach>
-				</ul>
-			</div>
-		</nav>
+	<div class="col-lg-2 bg-light">
+		<c:import url="menu_filtros.jsp">
+			<c:param name="id" value="${id}" />
+			<c:param name="categorias" value="${categorias }" />
+		</c:import>
 	</div>
 	<div class="col-lg-8">
 		<div class="container-fluid">
@@ -62,8 +37,8 @@
 										<button type="button" class="btn btn-info"
 											data-container="body" data-toggle="popover"
 											data-placement="top"
-											data-content="Este produto pode ser adquirido através ...">
-											Comprar</button>
+											data-content="${ConstantesApp.ONDE_COMPRAR }">
+											Onde comprar</button>
 									</div>
 								</div>
 							</div>
@@ -77,7 +52,7 @@
 											<div
 												class="carousel-item <c:if test="${st.count == 1}">active</c:if>">
 												<img class="d-block img-carousel" alt="Slide_${st.count}"
-													src="img/${img.nome_img }.jpg">
+													src="${ConstantesApp.CAMINHO_IMG }/${img.nome_img }.jpg">
 											</div>
 										</c:forEach>
 									</div>

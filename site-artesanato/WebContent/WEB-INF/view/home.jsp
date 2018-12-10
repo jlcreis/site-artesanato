@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.util.List,br.com.projeto.app.ConstantesApp"%>
 <%@ page import="java.util.List,br.com.projeto.modelo.Produto"%>
 
 <c:import url="cabecalho.jsp"></c:import>
@@ -13,21 +14,28 @@
 <div class="row justify-content-center">
 	<div class="col-2"></div>
 	<div class="col-8">
-		<c:if test="${produto_1 != null }">
-			<a
-				href="/site-artesanato/entrada?acao=MostraProduto&id=${produto_1.id_produto}">
-				<div class="card text-white mb-5">
-					<c:forEach items="${produto_1.lista_imagens }" var="img">
-						<img class="card-img w-100 cover" src="img/${img.nome_img}.jpg"
-							alt="Produto em destaque">
-					</c:forEach>
-					<div class="card-img-overlay">
-						<h5 class="card-title">${produto_1.nome_produto }</h5>
-						<p class="card-text">${produto_1.descricao_produto }</p>
-					</div>
-				</div>
-			</a>
-		</c:if>
+		<div class="row border-top">
+			<div class="col-4 dst-b">
+				<a
+					href="/site-artesanato/entrada?acao=MostraProduto&id=${produto_1.id_produto}">
+					<c:if test="${produto_1 != null }">
+						<div class="card text-white">
+							<c:forEach items="${produto_1.lista_imagens }" var="img">
+								<img class="card-img w-100 cover-sm"
+									src="<c:url value="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg"/>" alt="Produto em destaque">
+							</c:forEach>
+						</div>
+					</c:if>
+				</a>
+			</div>
+			<div class="col-6 center">
+				<p class="lead">${produto_1.categoria.nome_categoria }</p>
+				<p class="lead">
+					<strong>${produto_1.nome_produto }</strong>
+				</p>
+				<p class="lead">${produto_1.descricao_produto }</p>
+			</div>
+		</div>
 		<div class="row border-top">
 			<div class="col-4 dst-b">
 				<a
@@ -36,7 +44,7 @@
 						<div class="card text-white">
 							<c:forEach items="${produto_2.lista_imagens }" var="img">
 								<img class="card-img w-100 cover-sm"
-									src="<c:url value="img/${img.nome_img}.jpg"/>" alt="Produto em destaque">
+									src="<c:url value="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg"/>" alt="Produto em destaque">
 							</c:forEach>
 						</div>
 					</c:if>
@@ -59,7 +67,7 @@
 						<div class="card text-white">
 							<c:forEach items="${produto_3.lista_imagens }" var="img">
 								<img class="card-img w-100 cover-sm"
-									src="img/${img.nome_img}.jpg" alt="Produto em destaque">
+									src="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg" alt="Produto em destaque">
 							</c:forEach>
 						</div>
 
@@ -83,7 +91,7 @@
 						<div class="card text-white">
 							<c:forEach items="${produto_4.lista_imagens }" var="img">
 								<img class="card-img w-100 cover-sm"
-									src="img/${img.nome_img}.jpg" alt="Produto em destaque">
+									src="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg" alt="Produto em destaque">
 							</c:forEach>
 						</div>
 
@@ -107,7 +115,7 @@
 						<div class="card text-white">
 							<c:forEach items="${produto_5.lista_imagens }" var="img">
 								<img class="card-img w-100 cover-sm"
-									src="img/${img.nome_img}.jpg" alt="Produto em destaque">
+									src="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg" alt="Produto em destaque">
 							</c:forEach>
 						</div>
 

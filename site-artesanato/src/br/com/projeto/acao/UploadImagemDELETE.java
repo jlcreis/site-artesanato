@@ -26,7 +26,7 @@ import br.com.projeto.jdbc.dao.ImagemDAO;
 
 
 @MultipartConfig
-public class UploadImagem implements Acao {
+public class UploadImagemDELETE implements Acao {
 
 	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response)
@@ -53,6 +53,8 @@ public class UploadImagem implements Acao {
                         
                         try (Connection con = new Conexao().getConnection()) {
                 			ImagemDAO dao = new ImagemDAO(con);
+                			System.out.println("dentro do servlet");
+                			dao.upload(nome_img, item);
                 			dao.insert(Integer.valueOf(multiparts.get(0).getFieldName()), nome_img);
                 		}
                        

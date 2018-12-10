@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.projeto.acao.Acao;
 
@@ -25,6 +26,15 @@ public class UnicaEntradaServlet extends HttpServlet {
 		String nomeDaClasse = "br.com.projeto.acao." + paramAcao;
 		String nome = null;
 		
+		HttpSession sessao = request.getSession();
+		boolean naoLogado = (sessao.getAttribute("usuarioLogado") == null);
+		boolean acaoProtegida = (paramAcao.equals("Home"));
+		
+		if(acaoProtegida && naoLogado) {
+			response.sendRedirect("entrada?acao=LoginForm");
+			return;
+		}
+		
 		try {
 			Class<?> classe = Class.forName(nomeDaClasse);
 			@SuppressWarnings("deprecation")
@@ -33,7 +43,6 @@ public class UnicaEntradaServlet extends HttpServlet {
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			throw new ServletException(e);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

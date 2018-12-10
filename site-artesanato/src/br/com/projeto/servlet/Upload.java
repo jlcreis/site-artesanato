@@ -1,6 +1,5 @@
 package br.com.projeto.servlet;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.text.DateFormat;
@@ -21,7 +20,6 @@ import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
-import br.com.projeto.app.ConstantesApp;
 import br.com.projeto.jdbc.Conexao;
 import br.com.projeto.jdbc.dao.ImagemDAO;
 
@@ -59,35 +57,23 @@ public class Upload extends HttpServlet {
                     	Date dataAtual = new Date();
                     	Random gerador = new Random();
                     	nome_img = "IMG_"+ dateFormat.format(dataAtual) +"_"+ String.valueOf(gerador.nextInt(100000));
-                    	/*Salva a imagem*/
-//                    	File pasta = new File(ConstantesApp.CAMINHO_SERVIDOR);
-//                    	pasta.mkdir();
-                        item.write(new File(ConstantesApp.CAMINHO_IMG + File.separator + nome_img+".jpg"));
-                        //item.write(new File(request.getServletContext().getRealPath("img")+ File.separator + nome_img +".jpg"));
-                        
+                    	
                         try (Connection con = new Conexao().getConnection()) {
                 			ImagemDAO dao = new ImagemDAO(con);
+                			dao.upload(nome_img, item);
                 			dao.insert(id, nome_img);
 
                 		}
                     }
                 }
- 
-                request.setAttribute("message", "Arquivo carregado com sucesso");
-//              request.setAttribute("nome_img", nome_img);
+                 request.setAttribute("message", "Arquivo carregado com sucesso");
             } catch (Exception ex) {
                 request.setAttribute("message", "Upload de arquivo falhou devido a "+ ex);
             }
  
         } else {
             request.setAttribute("message","Desculpe este Servlet lida apenas com pedido de upload de arquivos");
-        }
-        
-        
-        response.sendRedirect("entrada?acao=EditarProduto&id="+ id);
-//        response.sendRedirect("entrada?acao=NovaImagemForm&id="+ id);
-//		request.getRequestDispatcher("WEB-INF/view/formNovoImagemProduto.jsp").forward(request, response);
-    
+        }               
+        response.sendRedirect("entrada?acao=EditarProduto&id="+ id);  
 	}
-
 }

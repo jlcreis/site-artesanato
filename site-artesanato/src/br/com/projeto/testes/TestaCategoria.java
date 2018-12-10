@@ -17,7 +17,17 @@ public class TestaCategoria {
 		list();
 		select(1);
 		update(2,"Tricô");
-
+		testaConexao();
+	}
+	
+	/**
+	 * Testa conexão com o servidor-BD
+	 * @throws SQLException
+	 */
+	private static void testaConexao() throws SQLException {
+		try(Connection con = new Conexao().getConnection()){
+			System.out.println("conexão realizada com sucesso");
+		}
 	}
 
 	/**

@@ -26,7 +26,8 @@ public class RemoveCategoria implements Acao {
 			removeCategoria.delete(id_categoria);
 		}
 		catch (SQLException e) {
-			String erro = "Não é possível remover categoria. Existem produtos nesta categoria.";
+			String erro = "Não é possível remover categoria. "
+					+ "Existem produtos cadastrados com nesta categoria.";
 			System.err.println(e.getErrorCode() +": "+ e.getMessage());
 			request.setAttribute("mensagem", erro);
 			return "forward:mensagemErro";

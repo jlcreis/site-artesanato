@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.tomcat.util.http.fileupload.FileItem;
+
 import br.com.projeto.app.ConstantesApp;
 import br.com.projeto.modelo.Imagem;
 
@@ -26,7 +28,7 @@ public class ImagemDAO {
 	 * @throws SQLException
 	 */
 	public void insert(int id_produto, String nome) throws SQLException {
-
+		System.out.println("dentro do insert");
 		String query = "insert into img_produto (id_produto, nome_img) value (?, ?)";
 
 		try (PreparedStatement pstmt = con.prepareStatement(query)) {
@@ -63,6 +65,12 @@ public class ImagemDAO {
 		return imagens;
 	}
 	
+	/**
+	 * Lista a primeira imagem de um produto.
+	 * @param id_produto
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Imagem> imgTop(int id_produto) throws SQLException {
 		List<Imagem> imagens = new ArrayList<>();
 
@@ -84,14 +92,13 @@ public class ImagemDAO {
 	}
 	
 	/**
-	 * Remove registro de imagem do banco de dados;
-	 * 
+	 * Remove registro de imagem do banco de dados.
 	 * @param id
 	 */
 	public void delete(int id) {
 		try {
 			String query = "delete from img_produto where id_img = ?";
-
+			
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, id);
 			pstmt.execute();
@@ -102,6 +109,11 @@ public class ImagemDAO {
 		}
 	}
 	
+	/**
+	 * Remove todos os registro de imagens de um produto deletado.
+	 * @param id_produto
+	 * @throws SQLException
+	 */
 	public void deleteImgProduto (int id_produto) throws SQLException {
 		
 		List<Imagem> imagens = lista(id_produto);
@@ -112,11 +124,22 @@ public class ImagemDAO {
 			for (Imagem imagem : imagens) {
 				pstmt.setInt(1, imagem.getId_produto());
 				pstmt.execute();
-				
-				File img = new File(ConstantesApp.CAMINHO_IMG +"\\"+ imagem.getNome_img() + ".jpg" );
+				//deleta arquivo da pasta
+				File img = new File(ConstantesApp.CAMINHO_SERVIDOR + ConstantesApp.CAMINHO_IMG + File.separator + imagem.getNome_img() + ".jpg" );
 				img.delete();
 			}
 		}
 	}
 
+	/**
+	 * Realiza upload da imagem.
+	 * @param nome_img
+	 * @param item
+	 * @throws Exception
+	 */
+	public void upload(String nome_img, FileItem item) throws Exception {
+		item.write(new File(ConstantesApp.CAMINHO_SERVIDOR + 
+				ConstantesApp.CAMINHO_IMG + File.separator + nome_img+".jpg"));
+
+	}
 }

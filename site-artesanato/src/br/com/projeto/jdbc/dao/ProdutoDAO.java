@@ -82,6 +82,12 @@ public class ProdutoDAO {
 		return produtos;
 	}
 	
+	/**
+	 * Lista todos os produtos de uma determinada categoria.
+	 * @param categoria
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Produto> produtoCategoria(int categoria) throws SQLException{
 		List<Produto> produtos = new ArrayList<>();
 

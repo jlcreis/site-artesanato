@@ -5,15 +5,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.projeto.acao.Acao;
-import br.com.projeto.acao.Home;
 import br.com.projeto.jdbc.Conexao;
 import br.com.projeto.jdbc.dao.CategoriaDAO;
 import br.com.projeto.jdbc.dao.ImagemDAO;
@@ -34,6 +31,7 @@ public class IndexServlet extends HttpServlet {
 			throws ServletException, IOException {
 	
 		try(Connection con = new Conexao().getConnection()){
+			
 			ProdutoDAO produtos = new ProdutoDAO(con);
 			List<Produto> lista_produtos = produtos.top5();
 			
@@ -57,4 +55,5 @@ public class IndexServlet extends HttpServlet {
 		
 		request.getRequestDispatcher("WEB-INF/view/index.jsp").forward(request, response);
     }
+    
 }

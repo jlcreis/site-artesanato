@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+
+<%@ page import="java.util.List,br.com.projeto.app.ConstantesApp"%>
 <c:url value="/entrada" var="linkEntradaServlet" />
 
 <c:import url="cabecalho.jsp"></c:import>
@@ -36,7 +38,7 @@
 		<c:forEach items="${listaImagens}" var="img">
 		<!-- Button trigger modal ver Imagem -->
 			<img data-toggle="modal" data-target="#verImagemModal_${img.nome_img }"
-				class="img-thumbnail" alt="imagem" src="img/${img.nome_img }.jpg"
+				class="img-thumbnail" alt="imagem" src="${ConstantesApp.CAMINHO_IMG }/${img.nome_img }.jpg"
 				style="width: 100px; height: 100px;">
 			<!-- Modal verImagem -->
 			<div class="modal fade" id="verImagemModal_${img.nome_img }" tabindex="-1"
@@ -52,7 +54,7 @@
 						</div>
 						<div class="modal-body">
 							<img class="img" alt="imagem"
-								src="img/${img.nome_img }.jpg">
+								src="${ConstantesApp.CAMINHO_IMG }/${img.nome_img }.jpg">
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secundary"
@@ -134,9 +136,41 @@
 			<a class="btn btn-secondary"
 				href="/site-artesanato/entrada?acao=MostraProduto&id=${produto.id_produto}"
 				role="button">Voltar</a>
+				<!-- Modal Button removeProduto -->
+						<button type="button" class="btn btn-danger"
+							data-toggle="modal"
+							data-target="#removeProduto_${produto.id_produto}">
+							Remover</button>
 		</form>
 	</div>
 </div>
+
+<!-- Modal removeProduto -->
+	<div class="modal fade" id="removeProduto_${produto.id_produto}"
+		tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Atenção!</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Tem certeza que deseja remover o produto <strong>${produto.nome_produto }</strong>
+					?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Não</button>
+					<a class="btn btn-danger" role="button"
+						href="/site-artesanato/entrada?acao=RemoveProduto&id=${produto.id_produto}">Sim</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 <c:import url="rodape.jsp"></c:import>

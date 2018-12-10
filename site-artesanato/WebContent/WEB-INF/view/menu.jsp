@@ -1,5 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a href="/site-artesanato" class="navbar-brand">Artesanato</a>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
+	<a href="/site-artesanato" class="navbar-brand">
+	<img src="img/logo.jpg" height="30" alt="Lu's Arte">
+	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarSupportedContent"
 		aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -30,5 +34,7 @@
         		</div>
 			</li>
 		</ul>
+		<span class="navbar-text">Usuário: ${usuarioLogado.nome}</span>
+		<c:import url="logout-parcial.jsp"/>
 	</div>
 </nav>
