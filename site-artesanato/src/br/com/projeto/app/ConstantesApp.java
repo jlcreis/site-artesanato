@@ -12,7 +12,7 @@ public class ConstantesApp {
 	public static String CAMINHO_IMG_TB = "img\\produtos\\thumbnail";
 	
 //	Labels
-	public static String NOME_SITE = "Lu's Arte";
+	public static String NOME_SITE = "Lu's Artes";
 	
 //	Informações
 	public static String ONDE_COMPRAR = "Este produto pode ser adquirido na loja do Artesanato, localizada na Praça Vô Costa, Bairro Estação, no prédio da Antiga Estação Ferroviária de Carandaí-MG. Ou através do whatsApp (xx)xxxxx-xxxx";

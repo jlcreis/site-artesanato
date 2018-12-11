@@ -9,7 +9,7 @@
 <div class="py-5">
 <div class="row">
 <div class="col-md-4 offset-md-4">
-<div class="card">
+<div class="card bg-danger text-white">
 	<div class="card-body">
 <%-- 		<h5 class="card-title">${ConstantesApp.NOME_SITE }</h5> --%>
 		<img src="img/logo.jpg" class="img-fluid" alt="Responsive image">

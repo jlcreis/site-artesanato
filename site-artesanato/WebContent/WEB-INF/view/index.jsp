@@ -70,7 +70,7 @@
 						<div class="col-sm-8 dst-b center text-dark text-truncate">
 							<p class="lead font-weight-normal">${produto_3.categoria.nome_categoria }</p>
 							<p class="lead font-weight-bold">${produto_3.nome_produto }</p>
-							<p class="lead font-italic text-truncate tx-p">${produto_2.descricao_produto }</p>
+							<p class="lead font-italic text-truncate tx-p">${produto_3.descricao_produto }</p>
 						</div>
 					</div>
 					</a>

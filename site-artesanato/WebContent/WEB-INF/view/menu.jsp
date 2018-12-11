@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
 	<a href="/site-artesanato" class="navbar-brand">
-	<img src="img/logo.jpg" height="30" alt="Lu's Arte">
+	<img src="img/lusArtes.png" height="30" alt="Lu's Arte">
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarSupportedContent"
