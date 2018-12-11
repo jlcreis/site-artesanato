@@ -59,7 +59,7 @@
 						<a href="/site-artesanato/entrada?acao=EditarProduto&id=${p.id_produto}">
 							<c:forEach items="${p.lista_imagens }" var="img">
 								<img class="card-img w-100 cover-sm"
-									src="<c:url value="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg"/>"
+									src="<c:url value="${ConstantesApp.CAMINHO_IMG }/thumbnail/tb_${img.nome_img}.jpg"/>"
 									alt="Produto em destaque">
 							</c:forEach>
 						</a>

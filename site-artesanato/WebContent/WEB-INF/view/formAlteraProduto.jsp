@@ -28,7 +28,6 @@
  	
 </style>
 
-
 <div class="card">
 	<div class="card-body">
 		<h5 class="card-title">Imagens</h5>
@@ -38,7 +37,7 @@
 		<c:forEach items="${listaImagens}" var="img">
 		<!-- Button trigger modal ver Imagem -->
 			<img data-toggle="modal" data-target="#verImagemModal_${img.nome_img }"
-				class="img-thumbnail" alt="imagem" src="${ConstantesApp.CAMINHO_IMG }/${img.nome_img }.jpg"
+				class="img-thumbnail" alt="imagem" src="${ConstantesApp.CAMINHO_IMG }/thumbnail/tb_${img.nome_img }.jpg"
 				style="width: 100px; height: 100px;">
 			<!-- Modal verImagem -->
 			<div class="modal fade" id="verImagemModal_${img.nome_img }" tabindex="-1"
@@ -134,7 +133,7 @@
 				type="hidden" name="acao" value="AlteraProduto" />
 			<button type="submit" class="btn btn-success">Salvar</button>
 			<a class="btn btn-secondary"
-				href="/site-artesanato/entrada?acao=MostraProduto&id=${produto.id_produto}"
+				href="/site-artesanato/entrada?acao=ListaProdutos"
 				role="button">Voltar</a>
 				<!-- Modal Button removeProduto -->
 						<button type="button" class="btn btn-danger"
@@ -171,6 +170,5 @@
 			</div>
 		</div>
 	</div>
-
 
 <c:import url="rodape.jsp"></c:import>

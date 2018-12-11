@@ -1,12 +1,18 @@
 package br.com.projeto.jdbc.dao;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
 
@@ -95,9 +101,13 @@ public class ImagemDAO {
 	 * Remove registro de imagem do banco de dados.
 	 * @param id
 	 */
-	public void delete(int id) {
+	public void delete(int id, String nomeImg) {
 		try {
 			String query = "delete from img_produto where id_img = ?";
+			
+
+			//deleta arquivo da pasta
+			deletaArquivo(nomeImg);
 			
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, id);
@@ -125,8 +135,13 @@ public class ImagemDAO {
 				pstmt.setInt(1, imagem.getId_produto());
 				pstmt.execute();
 				//deleta arquivo da pasta
-				File img = new File(ConstantesApp.CAMINHO_SERVIDOR + ConstantesApp.CAMINHO_IMG + File.separator + imagem.getNome_img() + ".jpg" );
-				img.delete();
+//				File img = new File(ConstantesApp.CAMINHO_SERVIDOR + ConstantesApp.CAMINHO_IMG + File.separator + imagem.getNome_img() + ".jpg" );
+//				img.delete();
+//				img = new File(ConstantesApp.CAMINHO_SERVIDOR + 
+//						ConstantesApp.CAMINHO_IMG + File.separator + "thumbnail" +
+//						File.separator + "tb_" + imagem.getNome_img() + ".jpg");
+//				img.delete();
+				deletaArquivo(imagem.getNome_img());
 			}
 		}
 	}
@@ -137,9 +152,64 @@ public class ImagemDAO {
 	 * @param item
 	 * @throws Exception
 	 */
-	public void upload(String nome_img, FileItem item) throws Exception {
-		item.write(new File(ConstantesApp.CAMINHO_SERVIDOR + 
-				ConstantesApp.CAMINHO_IMG + File.separator + nome_img+".jpg"));
-
+	public void upload(String nome_img, FileItem item) {
+		try {
+			File file = new File(ConstantesApp.CAMINHO_SERVIDOR + 
+					ConstantesApp.CAMINHO_IMG + File.separator + nome_img+".jpg");
+		item.write(file);
+		redimencionaImg(file, nome_img);
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
+	
+	/**
+	 * Redimenciona a imagem para 20% da original.
+	 * @param img
+	 * @param nome_img
+	 * @throws IOException
+	 */
+	private void redimencionaImg(File file, String nome_img) throws IOException {
+		System.out.println("redimenciona");
+		BufferedImage imagem = null;
+		try {
+			imagem = ImageIO.read(file);
+		} catch (IOException ex) {
+			System.out.println("Erro: "+ ex.getMessage());
+		}
+		
+		int  new_w = imagem.getWidth(), new_h = imagem.getHeight();
+		
+		double percent_w = (double)200/new_w;
+		double percent_h = (double)200/new_h;
+		
+		if (percent_w > percent_h) {
+			new_w = (int) (new_w * percent_w);
+			new_h = (int) (new_h * percent_w);
+		} else {
+			new_w = (int) (new_w * percent_h);
+			new_h = (int) (new_h * percent_h);
+		}
+		
+		BufferedImage new_img = new BufferedImage(new_w, new_h, BufferedImage.TYPE_INT_RGB);
+		Graphics2D g = new_img.createGraphics();
+		g.drawImage(imagem,	0, 0, new_w, new_h, null);
+		ImageIO.write(new_img, "jpg", new File(ConstantesApp.CAMINHO_SERVIDOR + 
+				ConstantesApp.CAMINHO_IMG + File.separator + "thumbnail" +
+				File.separator + "tb_" + nome_img + ".jpg"));
+	}
+	
+	/**
+	 * Deleta as imagens do disco.
+	 * @param nomeImg
+	 */
+	private void deletaArquivo(String nomeImg) {
+		File img = new File(ConstantesApp.CAMINHO_SERVIDOR + ConstantesApp.CAMINHO_IMG + File.separator + nomeImg + ".jpg" );
+		img.delete();
+		img = new File(ConstantesApp.CAMINHO_SERVIDOR + 
+				ConstantesApp.CAMINHO_IMG + File.separator + "thumbnail" +
+				File.separator + "tb_" + nomeImg + ".jpg");
+		img.delete();
+	}
+
 }

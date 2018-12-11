@@ -26,7 +26,7 @@ public class RemoveImagemProduto implements Acao {
 		
 		try(Connection con = new Conexao().getConnection()){
 			ImagemDAO removeImagem = new ImagemDAO(con);
-			removeImagem.delete(id_img);
+			removeImagem.delete(id_img, nomeImg);
 		}
 		
 		File imagem = new File(ConstantesApp.CAMINHO_IMG +"\\"+ nomeImg + ".jpg" );

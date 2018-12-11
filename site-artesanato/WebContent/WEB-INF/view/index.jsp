@@ -42,7 +42,7 @@
 							<div class="card text-white">
 								<c:forEach items="${produto_2.lista_imagens }" var="img">
 									<img class="card-img w-100 cover-sm"
-												src="<c:url value="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg"/>"
+												src="<c:url value="${ConstantesApp.CAMINHO_IMG }/thumbnail/tb_${img.nome_img}.jpg"/>"
 												alt="Produto em destaque">
 								</c:forEach>
 							</div>
@@ -62,7 +62,7 @@
 							<div class="card text-white">
 								<c:forEach items="${produto_3.lista_imagens }" var="img">
 									<img class="card-img w-100 cover-sm"
-												src="<c:url value="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg"/>"
+												src="<c:url value="${ConstantesApp.CAMINHO_IMG }/thumbnail/tb_${img.nome_img}.jpg"/>"
 												alt="Produto em destaque">
 								</c:forEach>
 							</div>
@@ -82,7 +82,7 @@
 							<div class="card text-white">
 								<c:forEach items="${produto_4.lista_imagens }" var="img">
 									<img class="card-img w-100 cover-sm"
-												src="<c:url value="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg"/>"
+												src="<c:url value="${ConstantesApp.CAMINHO_IMG }/thumbnail/tb_${img.nome_img}.jpg"/>"
 												alt="Produto em destaque">
 								</c:forEach>
 							</div>
@@ -102,7 +102,7 @@
 							<div class="card text-white">
 								<c:forEach items="${produto_5.lista_imagens }" var="img">
 									<img class="card-img w-100 cover-sm"
-												src="<c:url value="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg"/>"
+												src="<c:url value="${ConstantesApp.CAMINHO_IMG }/thumbnail/tb_${img.nome_img}.jpg"/>"
 												alt="Produto em destaque">
 								</c:forEach>
 							</div>

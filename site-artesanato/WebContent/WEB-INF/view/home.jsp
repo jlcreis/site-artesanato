@@ -17,12 +17,12 @@
 		<div class="row border-top">
 			<div class="col-4 dst-b">
 				<a
-					href="/site-artesanato/entrada?acao=MostraProduto&id=${produto_1.id_produto}">
+					href="/site-artesanato/entrada?acao=EditarProduto&id=${produto_1.id_produto}">
 					<c:if test="${produto_1 != null }">
 						<div class="card text-white">
 							<c:forEach items="${produto_1.lista_imagens }" var="img">
 								<img class="card-img w-100 cover-sm"
-									src="<c:url value="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg"/>" alt="Produto em destaque">
+									src="<c:url value="${ConstantesApp.CAMINHO_IMG }/thumbnail/tb_${img.nome_img}.jpg"/>" alt="Produto em destaque">
 							</c:forEach>
 						</div>
 					</c:if>
@@ -39,12 +39,12 @@
 		<div class="row border-top">
 			<div class="col-4 dst-b">
 				<a
-					href="/site-artesanato/entrada?acao=MostraProduto&id=${produto_2.id_produto}">
+					href="/site-artesanato/entrada?acao=EditarProduto&id=${produto_2.id_produto}">
 					<c:if test="${produto_2 != null }">
 						<div class="card text-white">
 							<c:forEach items="${produto_2.lista_imagens }" var="img">
 								<img class="card-img w-100 cover-sm"
-									src="<c:url value="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg"/>" alt="Produto em destaque">
+									src="<c:url value="${ConstantesApp.CAMINHO_IMG }/thumbnail/tb_${img.nome_img}.jpg"/>" alt="Produto em destaque">
 							</c:forEach>
 						</div>
 					</c:if>
@@ -62,12 +62,12 @@
 			<div class="col-4 dst-b">
 				<c:if test="${produto_3 != null }">
 					<a
-						href="/site-artesanato/entrada?acao=MostraProduto&id=${produto_3.id_produto}">
+						href="/site-artesanato/entrada?acao=EditarProduto&id=${produto_3.id_produto}">
 
 						<div class="card text-white">
 							<c:forEach items="${produto_3.lista_imagens }" var="img">
 								<img class="card-img w-100 cover-sm"
-									src="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg" alt="Produto em destaque">
+									src="${ConstantesApp.CAMINHO_IMG }/thumbnail/tb_${img.nome_img}.jpg" alt="Produto em destaque">
 							</c:forEach>
 						</div>
 
@@ -86,12 +86,12 @@
 			<div class="col-4 dst-b">
 				<c:if test="${produto_4 != null }">
 					<a
-						href="/site-artesanato/entrada?acao=MostraProduto&id=${produto_4.id_produto}">
+						href="/site-artesanato/entrada?acao=EditarProduto&id=${produto_4.id_produto}">
 
 						<div class="card text-white">
 							<c:forEach items="${produto_4.lista_imagens }" var="img">
 								<img class="card-img w-100 cover-sm"
-									src="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg" alt="Produto em destaque">
+									src="${ConstantesApp.CAMINHO_IMG }/thumbnail/tb_${img.nome_img}.jpg" alt="Produto em destaque">
 							</c:forEach>
 						</div>
 
@@ -110,12 +110,12 @@
 			<div class="col-4 dst-b">
 				<c:if test="${produto_5 != null }">
 					<a
-						href="/site-artesanato/entrada?acao=MostraProduto&id=${produto_5.id_produto}">
+						href="/site-artesanato/entrada?acao=EditarProduto&id=${produto_5.id_produto}">
 
 						<div class="card text-white">
 							<c:forEach items="${produto_5.lista_imagens }" var="img">
 								<img class="card-img w-100 cover-sm"
-									src="${ConstantesApp.CAMINHO_IMG }/${img.nome_img}.jpg" alt="Produto em destaque">
+									src="${ConstantesApp.CAMINHO_IMG }/thumbnail/tb_${img.nome_img}.jpg" alt="Produto em destaque">
 							</c:forEach>
 						</div>
 
