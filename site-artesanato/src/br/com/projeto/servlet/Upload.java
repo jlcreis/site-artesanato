@@ -43,7 +43,7 @@ public class Upload extends HttpServlet {
 		/*Identifica se o formulario é do tipo multipart/form-data*/
         if (ServletFileUpload.isMultipartContent(request)) {
         	
-        	String nome_img = null;
+//        	String nome_img = null;
         	
             try {
                 /*Faz o parse do request*/
@@ -56,7 +56,7 @@ public class Upload extends HttpServlet {
                     	DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
                     	Date dataAtual = new Date();
                     	Random gerador = new Random();
-                    	nome_img = "IMG_"+ dateFormat.format(dataAtual) +"_"+ String.valueOf(gerador.nextInt(100000));
+                    	String nome_img = "IMG_"+ dateFormat.format(dataAtual) +"_"+ String.valueOf(gerador.nextInt(100000));
                     	
                         try (Connection con = new Conexao().getConnection()) {
                 			ImagemDAO dao = new ImagemDAO(con);

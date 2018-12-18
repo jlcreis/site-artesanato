@@ -26,5 +26,13 @@ public class Categoria {
 		return nome_categoria;
 	}
 	
+	public static boolean valida(String nome){
+		if(nome.matches("[A-Z][a-z]{2,}")){
+			return true;
+		}
+		return false;
+	}
+	
+	
 	
 }

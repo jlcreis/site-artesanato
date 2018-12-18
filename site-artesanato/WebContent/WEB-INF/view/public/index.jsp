@@ -4,8 +4,8 @@
 <%@ page import="java.util.List,br.com.projeto.modelo.Produto"%>
 <%@ page import="java.util.List,br.com.projeto.app.ConstantesApp"%>
 
-<c:import url="public/cabecalho.jsp"></c:import>
-<c:import url="public/header.jsp"></c:import>
+<c:import url="cabecalho.jsp"></c:import>
+<c:import url="header.jsp"></c:import>
 
 <style type="text/css">
 @import url("css/home.css");
@@ -13,7 +13,7 @@
 
 <div class="row justify-content-center">
 	<div class="col-lg-2 bg-light">
-		<c:import url="public/menu_filtros.jsp">
+		<c:import url="menu_filtros.jsp">
 			<c:param name="id" value="${id}" />
 			<c:param name="categorias" value="${categorias }" />
 		</c:import>
@@ -122,5 +122,5 @@
 	<div class="col-lg-2"></div>
 </div>
 
-<c:import url="public/footer.jsp"></c:import>
-<c:import url="public/rodape.jsp"></c:import>
+<c:import url="footer.jsp"></c:import>
+<c:import url="rodape.jsp"></c:import>

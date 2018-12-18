@@ -53,7 +53,7 @@ public class IndexServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		request.getRequestDispatcher("WEB-INF/view/index.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/view/public/index.jsp").forward(request, response);
     }
     
 }

@@ -1,15 +1,19 @@
 package br.com.projeto.app;
 
+import java.io.File;
+
 public class ConstantesApp {
 	
 //	URLs
-	public static String DIRETORIO_IMG_PRODUTOS = "img/produtos";
+	public static String LOGO = "img"+ File.separator +"lusArtes.png";
+	
+	public static String DIRETORIO_IMG_PRODUTOS = "img"+ File.separator +"produtos";
 		
 	public static String CAMINHO_SERVIDOR = "";
 
-	public static String CAMINHO_IMG = "img\\produtos";
+	public static String CAMINHO_IMG = "img"+ File.separator +"produtos";
 	
-	public static String CAMINHO_IMG_TB = "img\\produtos\\thumbnail";
+	public static String CAMINHO_IMG_TB = "img"+ File.separator +"produtos"+ File.separator +"thumbnail";
 	
 //	Labels
 	public static String NOME_SITE = "Lu's Artes";

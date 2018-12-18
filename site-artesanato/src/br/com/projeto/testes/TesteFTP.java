@@ -1,6 +1,5 @@
 package br.com.projeto.testes;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.SocketException;
 
@@ -16,21 +15,21 @@ public class TesteFTP {
 		
 		ftp.login("lusartes", "dYR_$6WZp}i?");
 		
-		ftp.changeWorkingDirectory("public_html/assets/images/produtos");
+		ftp.changeWorkingDirectory("public_html/static/produtos");
 		
-		String nomeImg = "IMG-20160902-WA0008.jpg";
-		
-		FileInputStream arqEnviar = new FileInputStream("D:/Projeto Empresa/site artesanato/Imagens/VendasMercadoLivre/Toalha de Rosto/"+nomeImg);
-		
-		ftp.setFileTransferMode(FTPClient.BINARY_FILE_TYPE);
-		ftp.setFileType(FTPClient.BINARY_FILE_TYPE);
-		ftp.setControlKeepAliveTimeout(300);
-		ftp.enterLocalPassiveMode();
-		
-		if(ftp.storeFile(nomeImg, arqEnviar))
-			System.out.println("arquivo enviado");
-		else
-			System.out.println("erro no envio");
+//		String nomeImg = "IMG-20160902-WA0008.jpg";
+//		
+//		FileInputStream arqEnviar = new FileInputStream("D:/Projeto Empresa/site artesanato/Imagens/VendasMercadoLivre/Toalha de Rosto/"+nomeImg);
+//		
+//		ftp.setFileTransferMode(FTPClient.BINARY_FILE_TYPE);
+//		ftp.setFileType(FTPClient.BINARY_FILE_TYPE);
+//		ftp.setControlKeepAliveTimeout(300);
+//		ftp.enterLocalPassiveMode();
+//		
+//		if(ftp.storeFile(nomeImg, arqEnviar))
+//			System.out.println("arquivo enviado");
+//		else
+//			System.out.println("erro no envio");
 		
 		String[] arq = ftp.listNames();
 		
@@ -40,7 +39,12 @@ public class TesteFTP {
 		for (String string : arq) {
 			System.out.println(string);
 		}
+		ftp.changeWorkingDirectory("public_html/static");
+		System.out.println("Listando arquivos thumbnails");
 		
+		for (String string : arq) {
+			System.out.println(string);
+		}
 		ftp.logout();
 		ftp.disconnect();
 	}

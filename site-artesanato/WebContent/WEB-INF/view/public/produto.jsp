@@ -23,30 +23,41 @@
 				<div class="card">
 					<div class="card-body">
 						<div class="row">
-							<div class="col">
+							<div class="col-md-4">
 								<p class="lead font-weight-bold">${produto.nome_produto}</p>
 								<p class="lead text-justify font-italic">${produto.descricao_produto }</p>
-								<div class="row">
-									<div class="col-auto mr-auto">
-										<p class="lead font-weight-normal">
-											<fmt:formatNumber value="${produto.valor_produto }"
-												type="currency" />
-										</p>
-									</div>
-									<div class="col-auto">
-										<button type="button" class="btn btn-info"
-											data-container="body" data-toggle="popover"
-											data-placement="top"
-											data-content="${ConstantesApp.ONDE_COMPRAR }">
-											Onde comprar</button>
-									</div>
-								</div>
+								<p class="lead font-weight-normal">
+									<fmt:formatNumber value="${produto.valor_produto }"
+										type="currency" />
+								</p>
+								<!-- 								<div class="row"> -->
+								<!-- 									<div class="col-auto mr-auto"> -->
+								<!-- 										<p class="lead font-weight-normal"> -->
+								<%-- 											<fmt:formatNumber value="${produto.valor_produto }" --%>
+								<%-- 												type="currency" /> --%>
+								<!-- 										</p> -->
+								<!-- 									</div> -->
+								<!-- 									<div class="col-auto"> -->
+								<!-- 										<button type="button" class="btn btn-info" -->
+								<!-- 											data-container="body" data-toggle="popover" -->
+								<!-- 											data-placement="top" -->
+								<%-- 											data-content="${ConstantesApp.ONDE_COMPRAR }"> --%>
+								<!-- 											Onde comprar</button> -->
+								<!-- 									</div> -->
+								<!-- 								</div> -->
 							</div>
-						</div>
-						<div class="row">
-							<div class="col">
-								<div id="carouselExampleControls" class="carousel slide"
+							<!-- 						</div> -->
+							<!-- 						<div class="row"> -->
+							<div class="col-md-8">
+								<div id="carouselExampleControls" class="carousel"
 									data-ride="carousel" data-interval="false">
+									<ol class="carousel-indicators">
+										<c:forEach items="${listaImagens}" var="img" varStatus="st">
+											<li data-target="#carouselExampleIndicators"
+												data-slide-to="${st.count}"
+												class="<c:if test="${st.count == 1}">active</c:if>"></li>
+										</c:forEach>
+									</ol>
 									<div class="carousel-inner badge-dark hwx-400">
 										<c:forEach items="${listaImagens}" var="img" varStatus="st">
 											<div

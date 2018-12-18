@@ -12,12 +12,14 @@ public class TestaCategoria {
 
 	public static void main(String[] args) throws SQLException {
 
-		insert("Quadros");
-		delete(5);
-		list();
-		select(1);
-		update(2,"Tricô");
+//		insert("uadros");
+//		delete(5);
+//		list();
+//		select(1);
+//		update(2,"Tricô");
 		testaConexao();
+		
+
 	}
 	
 	/**
@@ -36,6 +38,7 @@ public class TestaCategoria {
 	 * @param novoNome
 	 * @throws SQLException
 	 */
+	@SuppressWarnings("unused")
 	private static void update(int id_categoria, String novoNome) throws SQLException {
 		try(Connection con = new Conexao().getConnection()){
 			Categoria categoria = new Categoria(id_categoria, novoNome);
@@ -66,6 +69,7 @@ public class TestaCategoria {
 	 * @param id_categoria
 	 * @throws SQLException
 	 */
+	@SuppressWarnings("unused")
 	private static void delete(int id_categoria) throws SQLException {
 		try(Connection con = new Conexao().getConnection()){
 			CategoriaDAO removeCategoria = new CategoriaDAO(con);

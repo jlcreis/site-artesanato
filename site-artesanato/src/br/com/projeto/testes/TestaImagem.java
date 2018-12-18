@@ -8,10 +8,8 @@ import java.net.SocketException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
-import javax.lang.model.element.ModuleElement.RequiresDirective;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
 
@@ -33,6 +31,9 @@ public class TestaImagem {
 		System.out.println(testaScala(400, 800));
 		System.out.println(testaScala(800, 800));
 		System.out.println(testaScala(1280, 600));
+		System.out.println(ConstantesApp.CAMINHO_SERVIDOR + 
+					ConstantesApp.CAMINHO_IMG + File.separator + "thumbnail" +
+					File.separator + "tb_");
 	}
 	
 	public static void upload(String nome, FileItem arqEnviar) throws Exception {
@@ -74,6 +75,7 @@ public class TestaImagem {
 		
 	}
 
+	@SuppressWarnings("unused")
 	private static void redimencionaImg() throws IOException {
 		BufferedImage imagem = null;
 		try {

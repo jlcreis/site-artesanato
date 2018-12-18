@@ -11,8 +11,7 @@
 <div class="col-md-4 offset-md-4">
 <div class="card bg-danger text-white">
 	<div class="card-body">
-<%-- 		<h5 class="card-title">${ConstantesApp.NOME_SITE }</h5> --%>
-		<img src="img/logo.jpg" class="img-fluid" alt="Responsive image">
+		<img src="${ConstantesApp.LOGO }" class="img-fluid" alt="Responsive image">
 		<form action="${linkEntradaServlet }" method="post">
 			<div class="form-group">
 				<label for="InputEmail">E-mail</label> <input class="form-control"

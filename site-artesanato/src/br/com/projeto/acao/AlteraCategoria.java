@@ -17,15 +17,17 @@ public class AlteraCategoria implements Acao {
 	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
-		
-		String nomeCategoria = request.getParameter("nome");
-		String paramId = request.getParameter("id");
-		Integer id_categoria = Integer.valueOf(paramId);
-		
-		try(Connection con = new Conexao().getConnection()){
-			Categoria categoria = new Categoria(id_categoria, nomeCategoria);
-			CategoriaDAO update = new CategoriaDAO(con);
-			update.update(categoria);
+		if (Categoria.valida(request.getParameter("nome"))) {
+			String nomeCategoria = request.getParameter("nome");
+			String paramId = request.getParameter("id");
+			Integer id_categoria = Integer.valueOf(paramId);
+
+			try (Connection con = new Conexao().getConnection()) {
+				Categoria categoria = new Categoria(id_categoria, nomeCategoria);
+				CategoriaDAO update = new CategoriaDAO(con);
+				update.update(categoria);
+			}
+	
 		}
 		
 		return "redirect:ListaCategorias";

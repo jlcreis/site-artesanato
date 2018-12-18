@@ -14,8 +14,8 @@ public class Conexao {
 		System.out.println("Conectando...");
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost/site-artesanato", "root", "reis587");
-//			con = DriverManager.getConnection("jdbc:mysql://184.107.94.164/lusartes_v.01?verifyServerCertificate=false&useSSL=true", "lusartes_adm", "admLusArtes_587");
+//			con = DriverManager.getConnection("jdbc:mysql://localhost/site-artesanato", "root", "reis587");
+			con = DriverManager.getConnection("jdbc:mysql://184.107.94.164/lusartes_v.01?verifyServerCertificate=false&useSSL=true", "lusartes_adm", "admLusArtes_587");
 			System.out.println("Conectado.");
 		} catch(ClassNotFoundException ex) {
 			System.out.println("Classe não ecntrada, adicione o driver nas bibliotecas.");

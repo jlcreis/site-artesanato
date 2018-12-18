@@ -23,7 +23,7 @@
 								<a
 									href="/site-artesanato/entrada?acao=PublicProduto&id=${p.id_produto}">
 									<img class="card-img-top"
-									src="${ConstantesApp.CAMINHO_IMG }/${img.nome_img }.jpg"
+									src="${ConstantesApp.CAMINHO_IMG }/thumbnail/tb_${img.nome_img }.jpg"
 									alt="Card_${p.nome_produto }">
 								</a>
 							</c:forEach>
@@ -38,6 +38,7 @@
 	</div>
 	<div class="col-lg-2"></div>
 </div>
+
 
 
 <c:import url="footer.jsp"></c:import>

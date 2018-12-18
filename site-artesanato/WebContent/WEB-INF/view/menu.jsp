@@ -1,8 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.util.List,br.com.projeto.app.ConstantesApp"%>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
 	<a href="/site-artesanato" class="navbar-brand">
-	<img src="img/lusArtes.png" height="30" alt="Lu's Arte">
+	<img src="${ConstantesApp.LOGO }" height="30" alt="Lu's Arte">
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarSupportedContent"

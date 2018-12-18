@@ -1,9 +1,10 @@
 
+<%@ page import="java.util.List,br.com.projeto.app.ConstantesApp"%>
 <header class="bg-danger">
 	<div class="row py-3">
 		<div class="col">
 			<div class="container d-flex">
-				<a href="/site-artesanato"> <img src="img/lusArtes.png"
+				<a href="/site-artesanato"> <img src="${ConstantesApp.LOGO }"
 					class="img-fluid" alt="Responsive image" style="height: 10vw">
 				</a>
 			</div>
